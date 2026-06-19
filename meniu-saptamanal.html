@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meniul Săptămânii — Prichindel Club</title>
+<style>
+  :root{--teal:#2f8f83;--teal-light:#e7f4f1;--coral:#ff7a59;--ink:#243231;--muted:#5d6b69;--line:#e0e8e5;}
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Nunito',-apple-system,Segoe UI,Roboto,sans-serif;color:var(--ink);
+    background:#f4f8f6;line-height:1.5;padding:32px 18px;}
+  .sheet{max-width:920px;margin:0 auto;background:#fff;border-radius:18px;overflow:hidden;
+    box-shadow:0 20px 50px -28px rgba(35,107,98,.5);}
+  .sheet-head{background:linear-gradient(135deg,var(--teal),#236b62);color:#fff;padding:28px 34px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+  .sheet-head h1{margin:0;font-size:1.7rem;}
+  .sheet-head .brand{font-weight:800;font-size:1.1rem;display:flex;align-items:center;gap:.4rem;}
+  .sheet-head small{display:block;opacity:.9;font-weight:600;font-size:.85rem;margin-top:.2rem;}
+  .toolbar{max-width:920px;margin:0 auto 16px;display:flex;gap:10px;justify-content:flex-end;}
+  .btn{font-family:inherit;font-weight:700;border:none;border-radius:999px;padding:.6rem 1.3rem;
+    cursor:pointer;font-size:.95rem;}
+  .btn-print{background:var(--coral);color:#fff;}
+  .btn-back{background:#fff;color:var(--teal);border:2px solid var(--teal);text-decoration:none;
+    display:inline-flex;align-items:center;}
+  .btn{display:inline-flex;align-items:center;gap:.45rem;}
+  .ic{width:1.1em;height:1.1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;}
+  .brand .ic{width:1.2rem;height:1.2rem;color:#fff;}
+  .legend{padding:18px 34px;background:var(--teal-light);font-size:.88rem;display:flex;gap:24px;flex-wrap:wrap;}
+  .legend b{color:var(--teal);}
+  table{width:100%;border-collapse:collapse;}
+  th,td{padding:14px 18px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);font-size:.92rem;}
+  th{background:#fafdfc;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);}
+  .day{font-weight:800;color:var(--teal);font-size:1rem;white-space:nowrap;}
+  .dish{font-weight:600;}
+  .sub{color:var(--muted);font-size:.82rem;}
+  .kcal{font-weight:800;color:var(--coral);white-space:nowrap;}
+  .alerg{font-size:.82rem;}
+  .tag{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;
+    padding:.05rem .5rem;font-size:.72rem;margin:.1rem .15rem 0 0;color:var(--muted);}
+  .alt{padding:22px 34px;background:#fff8ef;border-top:2px dashed #ffd9b8;}
+  .alt h2{margin:0 0 .6rem;color:var(--coral);font-size:1.15rem;}
+  .alt ul{margin:0;padding-left:1.2rem;}
+  .alt li{margin-bottom:.3rem;font-size:.9rem;}
+  .foot{padding:18px 34px;font-size:.78rem;color:var(--muted);text-align:center;}
+  .note-edit{background:#fff3cd;color:#7a5b00;font-size:.8rem;padding:6px 12px;border-radius:8px;
+    max-width:920px;margin:0 auto 16px;}
+  @media print{
+    body{background:#fff;padding:0;}
+    .toolbar,.note-edit{display:none;}
+    .sheet{box-shadow:none;border-radius:0;max-width:none;}
+    .sheet-head{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    .legend,.alt,th,.kcal,.day{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-balloon" viewBox="0 0 24 24"><ellipse cx="12" cy="9" rx="6" ry="7"/><path d="M12 16c-.8.9.8 1.6 0 2.5"/><path d="M10.5 19h3"/></symbol>
+      <symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 9V2h12v7"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></symbol>
+    </defs>
+  </svg>
+
+  <p class="note-edit">Document orientativ — înlocuiți preparatele, caloriile și alergenii cu meniul real al săptămânii.</p>
+
+  <div class="toolbar">
+    <a href="index.html" class="btn btn-back"><svg class="ic"><use href="#i-back"/></svg> Înapoi la site</a>
+    <button class="btn btn-print" onclick="window.print()"><svg class="ic"><use href="#i-printer"/></svg> Printează / Salvează PDF</button>
+  </div>
+
+  <div class="sheet">
+    <div class="sheet-head">
+      <div>
+        <h1>Meniul Săptămânii</h1>
+        <small>Săptămâna [zz.ll – zz.ll.aaaa]</small>
+      </div>
+      <div class="brand"><svg class="ic"><use href="#i-balloon"/></svg> Prichindel Club<small>Lunca Cetățuii, Iași</small></div>
+    </div>
+
+    <div class="legend">
+      <span><b>Catering:</b> [Nume firmă] · autorizat DSV</span>
+      <span><b>kcal</b> = valoare estimată / porție copil</span>
+      <span><b>Alergeni</b> marcați la fiecare preparat</span>
+    </div>
+
+    <table>
+      <thead>
+        <tr><th>Ziua</th><th>Prânz</th><th>Gustare</th><th>Calorii</th><th>Alergeni</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day">Luni</td>
+          <td><span class="dish">Supă de legume</span><br /><span class="dish">Piept de pui cu orez</span><br /><span class="sub">Compot de mere</span></td>
+          <td>Iaurt cu fructe<br /><span class="sub">Baton de cereale</span></td>
+          <td class="kcal">≈ 620</td>
+          <td class="alerg"><span class="tag">gluten</span><span class="tag">lactoză</span></td>
+        </tr>
+        <tr>
+          <td class="day">Marți</td>
+          <td><span class="dish">Ciorbă de perișoare</span><br /><span class="dish">Tocăniță de cartofi cu carne</span><br /><span class="sub">Fruct de sezon</span></td>
+          <td>Brânză cu legume<br /><span class="sub">Felii de pâine</span></td>
+          <td class="kcal">≈ 650</td>
+          <td class="alerg"><span class="tag">gluten</span><span class="tag">ou</span><span class="tag">țelină</span></td>
+        </tr>
+        <tr>
+          <td class="day">Miercuri</td>
+          <td><span class="dish">Supă cremă de dovleac</span><br /><span class="dish">Paste cu sos de roșii și parmezan</span><br /><span class="sub">Salată verde</span></td>
+          <td>Mere coapte cu scorțișoară</td>
+          <td class="kcal">≈ 590</td>
+          <td class="alerg"><span class="tag">gluten</span><span class="tag">lactoză</span></td>
+        </tr>
+        <tr>
+          <td class="day">Joi</td>
+          <td><span class="dish">Supă de pui cu tăiței</span><br /><span class="dish">Pește la cuptor cu piure</span><br /><span class="sub">Compot</span></td>
+          <td>Smoothie de fructe<br /><span class="sub">Covrigel</span></td>
+          <td class="kcal">≈ 610</td>
+          <td class="alerg"><span class="tag">pește</span><span class="tag">gluten</span><span class="tag">lactoză</span></td>
+        </tr>
+        <tr>
+          <td class="day">Vineri</td>
+          <td><span class="dish">Borș de legume</span><br /><span class="dish">Chiftele la cuptor cu garnitură</span><br /><span class="sub">Prăjitură de casă</span></td>
+          <td>Budincă de orez<br /><span class="sub">Fruct</span></td>
+          <td class="kcal">≈ 640</td>
+          <td class="alerg"><span class="tag">gluten</span><span class="tag">ou</span><span class="tag">lactoză</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alt">
+      <h2>Opțiuni alternative — la cerere</h2>
+      <ul>
+        <li><b>Vegetarian:</b> înlocuim carnea/peștele cu surse vegetale (legume, leguminoase, brânză, ou — după caz).</li>
+        <li><b>Fără gluten:</b> paste / pâine / pesmet fără gluten și verificarea fiecărui preparat.</li>
+        <li><b>Fără lactoză:</b> alternative fără lactoză pentru lactate și sosuri.</li>
+        <li><b>Alte intoleranțe / alergii:</b> ne spui în scris la înscriere și adaptăm meniul individual.</li>
+      </ul>
+    </div>
+
+    <div class="foot">
+      Meniu publicat săptămânal · Prichindel Club, Lunca Cetățuii, com. Ciurea, jud. Iași · Tel: [07xx xxx xxx]
+    </div>
+  </div>
+
+</body>
+</html>
